@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Modulo di Spedizione</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .header-text {
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 1rem;
+        }
+        .header h1 {
+            color: #1e40af;
+            font-size: 3rem;
+            margin: 0;
+        }
+        .header p {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .column {
+            width: 48%;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .card-header {
+            border-bottom: 2px solid #1e40af;
+            padding: 1rem;
+        }
+        .card-header h2 {
+            color: #1e40af;
+            font-size: 1.25rem;
+            margin: 0;
+        }
+        .card-content {
+            padding: 1rem;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        button {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        button.green {
+            background-color: #10b981;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 0.25rem 0.5rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://via.placeholder.com/120" alt="Logo General Vending" width="120" height="120">
+            <div class="header-text">
+                <h1>GENERAL VENDING</h1>
+                <p>Soluzioni per operatori Vending e Retail</p>
+            </div>
+            <img src="https://via.placeholder.com/120" alt="Logo Luxury" width="120" height="120">
+        </div>
+
+        <div class="content">
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Dati del Cliente</h2>
+                    </div>
+                    <div class="card-content">
+                        <input type="text" placeholder="Codice Cliente (5 cifre)" maxlength="5">
+                        <input type="text" placeholder="Nome e Cognome / Ragione Sociale">
+                        <input type="text" placeholder="Indirizzo">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" placeholder="Città" style="width: 50%;">
+                            <input type="text" placeholder="Provincia" style="width: 25%;">
+                            <input type="text" placeholder="CAP" style="width: 25%;">
+                        </div>
+                        <input type="tel" placeholder="Telefono">
+                        <input type="email" placeholder="Email">
+                        <div style="display: flex; justify-content: space-between;">
+                            <button class="green">Carica Cliente</button>
+                            <button class="green">Salva Cliente</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Dettagli della Spedizione</h2>
+                    </div>
+                    <div class="card-content">
+                        <label for="merchandiseValue">Valore della Merce (€):</label>
+                        <input type="number" id="merchandiseValue" placeholder="Inserisci il valore della merce" min="0" step="0.01">
+                        
+                        <label for="palletNumber">Numero di Pallet (1-33):</label>
+                        <input type="number" id="palletNumber" min="1" max="33" value="1">
+                        
+                        <div id="palletDetails">
+                            <h3>Pallet 1</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label>Larghezza (cm):</label>
+                                    <input type="number" min="0" step="0.1">
+                                </div>
+                                <div>
+                                    <label>Profondità (cm):</label>
+                                    <input type="number" min="0" step="0.1">
+                                </div>
+                                <div>
+                                    <label>Altezza (cm):</label>
+                                    <input type="number" min="0" step="0.1">
+                                </div>
+                                <div>
+                                    <label>Peso (kg):</label>
+                                    <input type="number" min="0" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button style="width: 100%; margin-top: 1rem;">Calcola miglior spedizioniere</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Storico Spedizioni Cliente</h2>
+                    </div>
+                    <div class="card-content">
+                        <p style="color: #10b981; font-weight: bold;">Totale Pallet Spediti: <span style="color: black; font-weight: normal;">487</span></p>
+                        <p style="color: #10b981; font-weight: bold;">Valore totale delle spedizioni effettuate ad oggi: <span style="color: black; font-weight: normal;">€157,325.00</span></p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Spedizioniere</th>
+                                    <th>Costo Totale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>MT LOGISTIC</td><td>€52,230.00</td></tr>
+                                <tr><td>LA PREALPINA</td><td>€48,705.50</td></tr>
+                                <tr><td>BRT</td><td>€31,207.75</td></tr>
+                                <tr><td>GLS</td><td>€15,681.75</td></tr>
+                                <tr><td>G.I.D.D. Srl</td><td>€9,500.00</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="color: #10b981; font-weight: bold; margin-top: 0.75rem;">Incidenza costi di trasporto sul fatturato: <span style="color: black; font-weight: normal;">3.75%</span></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Risultati</h2>
+                    </div>
+                    <div class="card-content">
+                        <p>I risultati del calcolo verranno visualizzati qui dopo aver cliccato sul pulsante "Calcola miglior spedizioniere".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
